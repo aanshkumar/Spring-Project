@@ -6,6 +6,8 @@ import com.anshcodes.productservice.ProductDto.ProductDto;
 import com.anshcodes.productservice.ProductService.Service;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/Product")
 
@@ -23,9 +25,14 @@ public class ProductController {
     }
 
 
-    @GetMapping("")
+    @GetMapping("fgbdf")
     public String Productid(@PathVariable("id") Long id){
         return "my first spring project" + id;
+    }
+
+    @GetMapping("")
+    public @ResponseBody List<ProductDto> AllproductByid(){
+        return service.AllproductByid();
     }
 
     @PostMapping("/hello")
