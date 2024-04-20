@@ -1,6 +1,7 @@
 package com.anshcodes.productservice.ProductController;
 
 
+import com.anshcodes.productservice.ExceptionHandeling.Exception;
 import com.anshcodes.productservice.PeoductModels.Products;
 import com.anshcodes.productservice.ProductDto.ProductDto;
 import com.anshcodes.productservice.ProductService.Service;
@@ -20,7 +21,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public @ResponseBody ProductDto ProductbyId(@PathVariable("id") Long id){
+    public @ResponseBody ProductDto ProductbyId(@PathVariable("id") Long id) throws Exception {
         return service.ProductbyId(id);
     }
 

@@ -1,6 +1,7 @@
 package com.anshcodes.productservice.ProductService;
 
 
+import com.anshcodes.productservice.ExceptionHandeling.Exception;
 import com.anshcodes.productservice.PeoductModels.Products;
 import com.anshcodes.productservice.ProductDto.ProductDto;
 import org.springframework.web.client.RestTemplate;
@@ -11,6 +12,8 @@ import java.util.List;
 
 @org.springframework.stereotype.Service
 public class Service {
+
+    // http://localhost:8080/swagger-ui/index.html
 
     public static ProductDto convertodto(Products product){
         ProductDto obj =new ProductDto();
@@ -35,7 +38,7 @@ public class Service {
         return returnproduct;
     }
 
-    public ProductDto ProductbyId(Long id) {
+    public ProductDto ProductbyId(Long id) throws Exception {
 
         RestTemplate restTemplate=new RestTemplate();
 
@@ -44,6 +47,10 @@ public class Service {
         Products products= restTemplate.getForObject(url, Products.class);
 
         System.out.print(products);
+
+        if(products ==null){
+            throw new Exception();
+        }
 
         return convertodto(products);
     }
