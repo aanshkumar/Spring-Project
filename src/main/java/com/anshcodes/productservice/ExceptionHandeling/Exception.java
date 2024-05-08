@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class Exception extends java.lang.Exception {
 
     public Exception() {
+
         super("Product Not found");
     }
 }
